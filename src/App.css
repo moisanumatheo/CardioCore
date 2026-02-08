@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+/* =========================
+   Paletă & bază CardioCore
+   ========================= */
+:root {
+  --brand: #c23b22; /* roșu medical */
+  --brand-dark: #992e1b; /* hover/active */
+  --accent: #c6a45d; /* auriu/bej calm */
+
+  --bg: #faf8f2; /* crem din brief */
+  --card: #ffffff;
+
+  --ink: #0f172a; /* slate-900 */
+  --muted: #475569; /* slate-600 */
+
+  --radius: 16px; /* rounded-2xl vibe */
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --ringw: 2px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+}
+
+/* linkuri consistente pe brand */
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* selecție frumoasă la text */
+::selection {
+  background: color-mix(in srgb, var(--brand) 18%, transparent);
+}
+
+/* focus vizibil pentru accesibilitate */
+:focus-visible {
+  outline: var(--ringw) solid color-mix(in srgb, var(--brand) 55%, #0000);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* =========================
+   Helpers/Patterns UI
+   ========================= */
+.card {
+  background: var(--card);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.badge {
+  border-radius: 999px;
+}
+
+/* subtle float pentru iconițe */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+.anim-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* =========================
+   Tipografie (Playfair/Lato)
+   ========================= */
+@layer base {
+  :root {
+    --font-title: "Playfair Display", ui-serif, Georgia, serif;
+    --font-body:
+      "Lato", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+      sans-serif;
+  }
+  body {
+    font-family: var(--font-body);
+  }
+  h1,
+  h2,
+  h3,
+  .font-title,
+  .heading-serif {
+    font-family: var(--font-title);
+  }
+}
+
+@layer utilities {
+  .font-title {
+    font-family: var(--font-title);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
+/* =========================
+   Componente utilitare
+   ========================= */
+/* === Butoane standardizate === */
+
+/* roșu brand, text alb */
+a.btn-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--brand);
+  color: #fff !important; /* bate regula globală a{} */
+  border: 1px solid color-mix(in srgb, #000 10%, var(--brand));
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  transition:
+    background 0.15s ease,
+    transform 0.05s ease;
+}
+a.btn-brand:hover {
+  background: var(--brand-dark);
+  text-decoration: none;
+}
+a.btn-brand:active {
+  transform: translateY(1px);
+}
+
+/* fundal alb, text roșu (gen “apel”/telefon) */
+a.btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: #fff;
+  color: var(--brand) !important; /* bate regula globală a{} */
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.05s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+a.btn-white:hover {
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+}
+a.btn-white:active {
+  transform: translateY(1px);
+}
+
+/* (opțional) „ghost” pe fundal roșu – text alb + transparență */
+a.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  background: color-mix(in srgb, #fff 10%, var(--brand));
+  color: #fff !important; /* vizibil pe roșu */
+  border: 1px solid color-mix(in srgb, #fff 25%, var(--brand));
+  transition: background 0.15s ease;
+}
+a.btn-ghost:hover {
+  background: color-mix(in srgb, #fff 20%, var(--brand));
+  text-decoration: none;
+}
+
+/* input standard */
+.input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+}
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 var(--ringw) color-mix(in srgb, var(--brand) 55%, #0000);
+}
+
+/* tag / chip pentru liste de competențe */
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+}
+
+/* grid cu înălțimi egale (fallback în afara Tailwind) */
+.equal-grid {
+  align-items: stretch;
+}
