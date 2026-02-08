@@ -1,5 +1,5 @@
 import { SITE } from "../data/site";
-
+import logoUrl from "/CardioCoreLogo.png";
 export default function Footer() {
   const phoneLink = SITE.phone.replace(/\s+/g, "");
 
@@ -8,11 +8,13 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-10 grid gap-8 md:grid-cols-4 text-sm">
         {/* Coloana 1 – Brand */}
         <div>
-          <div className="font-semibold text-base">{SITE.name}</div>
-          <p className="mt-2 text-[var(--muted)]">{SITE.slogan}</p>
-          <p className="mt-3 text-xs text-[var(--muted)]">
-            Momentan, doar servicii cu plată.
-          </p>
+          <img
+            src={logoUrl}
+            alt="CardioCore"
+            className="h-20 md:h-24 lg:h-24 w-auto object-contain select-none"
+            loading="eager"
+            decoding="async"
+          />
         </div>
 
         {/* Coloana 2 – Contact */}

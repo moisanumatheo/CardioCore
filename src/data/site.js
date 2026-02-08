@@ -1,7 +1,7 @@
 // src/data/site.js
 export const SITE = {
   name: "CardioCore",
-  slogan: "Inimile pacienților, în mâini sigure",
+  slogan: "Pentru inima ta",
   ctaLines: [
     "Programează-te acum pentru un control cardiologic complet.",
     "Ai grijă de inima ta — fă primul pas azi.",
