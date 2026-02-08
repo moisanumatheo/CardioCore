@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { SITE } from "../data/site";
 import Seo from "../components/Seo.jsx";
 
 export default function Preturi() {
   const p = SITE.pricing;
-  const [docA, docB] = p.doctors;
+  const [docA, docB] = p.doctors || [];
 
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
@@ -17,13 +18,18 @@ export default function Preturi() {
         <h1 className="text-3xl md:text-4xl font-bold">
           Prețuri <span className="text-[var(--brand)]">CardioCore</span>
         </h1>
-        <p className="mt-3 text-[15px] text-[var(--muted)] max-w-2xl">
-          {p.note}
-        </p>
 
-        <div className="mt-3 text-xs text-[var(--muted)]">
-          Actualizat: {p.updatedAt}
-        </div>
+        {p?.note && (
+          <p className="mt-3 text-[15px] text-[var(--muted)] max-w-2xl">
+            {p.note}
+          </p>
+        )}
+
+        {p?.updatedAt && (
+          <div className="mt-3 text-xs text-[var(--muted)]">
+            Actualizat: {p.updatedAt}
+          </div>
+        )}
       </section>
 
       {/* TABLE */}
@@ -33,17 +39,24 @@ export default function Preturi() {
             <thead>
               <tr className="text-left border-b">
                 <th className="py-3 pr-4">Serviciu</th>
-                <th className="py-3 pr-4 whitespace-nowrap">{docA}</th>
-                <th className="py-3 pr-4 whitespace-nowrap">{docB}</th>
+                <th className="py-3 pr-4 whitespace-nowrap">
+                  {docA || "Medic"}
+                </th>
+                <th className="py-3 pr-4 whitespace-nowrap">
+                  {docB || "Medic"}
+                </th>
               </tr>
             </thead>
+
             <tbody>
-              {p.items.map((it) => (
+              {(p?.items || []).map((it) => (
                 <tr key={it.service} className="border-b last:border-b-0">
                   <td className="py-3 pr-4 text-[var(--ink)]">{it.service}</td>
+
                   <td className="py-3 pr-4 whitespace-nowrap text-[var(--muted)]">
                     {typeof it.a === "number" ? `${it.a} ${p.currency}` : "—"}
                   </td>
+
                   <td className="py-3 pr-4 whitespace-nowrap text-[var(--muted)]">
                     {typeof it.b === "number" ? `${it.b} ${p.currency}` : "—"}
                   </td>
@@ -58,12 +71,14 @@ export default function Preturi() {
           <div className="text-base font-medium">
             Pentru confirmarea prețului și disponibilitate, contactează-ne.
           </div>
+
           <div className="flex items-center gap-3">
-            <a href="/contact" className="btn-ghost on-brand">
+            <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
-            </a>
+            </Link>
+
             <a
-              href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
+              href={`tel:${String(SITE.phone || "").replace(/\s+/g, "")}`}
               className="btn-white"
             >
               {SITE.phone}

@@ -113,7 +113,7 @@ export const SITE = {
   faqServices: [
     {
       q: "Este nevoie de trimitere de la medicul de familie?",
-      a: "Nu, programarea la CardioCore se poate face direct, fără bilet de trimitere.",
+      a: "Echipa CardioCore ofera consultatii cu sau fără bilet de trimitere.",
     },
     {
       q: "Cât durează un consult cardiologic complet?",
@@ -129,7 +129,7 @@ export const SITE = {
     },
     {
       q: "Cât durează analiza Holter?",
-      a: "Monitorizarea se desfășoară 24-72h, iar rezultatele se interpretează în 1-2 zile lucrătoare.",
+      a: "Monitorizarea se desfășoară 24-72h, iar rezultatele se interpretează pe loc.",
     },
     {
       q: "Cum pot anula o programare?",
@@ -218,21 +218,26 @@ export const TEAM = [
     tags: ["Imagistică", "Ecocardiografie", "Prevenție"],
     phone: "+40 778 739 245",
     email: "andreea.cuculici@clinica.ro",
-    bio:
-      "Specializată în cardiologie generală și imagistică, respectiv cardiologie de urgenta , cu experiență vasta  în diagnostic avansat și monitorizarea afecțiunilor cronice." +
-      " Dr. Cuculici abordează fiecare caz cu atenție la detalii și o viziune modernă asupra preventie primare si secundare a bolilor cardiovasculare.",
+    bio: [
+      "Dr. Andreea Cuculici este medic primar cardiolog, membru al Societății Române de Cardiologie și al Societății Europene de Cardiologie, activând în cadrul Institutului de Boli Cardiovasculare „Prof. Dr. C.C. Iliescu” București, Secția de Urgențe Cardiovasculare.",
+      "A absolvit Facultatea de Medicină a Universității „Ovidius” Constanța în anul 2004, devenind medic specialist cardiolog în 2012. Din 2017 deține titlul de medic primar cardiolog, iar din 2020 titlul de Doctor în Medicină. În 2016 a obținut competențe în ecocardiografie transesofagiană și tehnici speciale, precum și în ecografie vasculară Doppler, acordate de UMF „Carol Davila” București.",
+      "Are o experiență clinică extinsă în cardiologia de urgență, fiind implicată direct în evaluarea și tratamentul pacienților cu sindroame coronariene acute, insuficiență cardiacă acută, tulburări de ritm cardiac și alte afecțiuni cardiovasculare severe, într-un centru de referință la nivel național.",
+      "Abordarea sa medicală este integrată și personalizată, centrată pe pacient, îmbinând rigoarea profesională cu aplicarea ghidurilor europene actuale și a medicinei bazate pe dovezi, alături de empatie, comunicare clară și luarea deciziilor terapeutice adaptate fiecărui caz în parte.",
+    ],
   },
   {
     id: "pirianu",
-    name: "Dr. Pîrîianu-Masgras Roxana-Bianca",
+    name: "Dr. Pîrîianu-Masgras Bianca",
     title: "Medic specialist cardiolog",
     specialty: "Cardiologie",
     tags: ["Imagistică", "Consult adult", "Educație pacient"],
     phone: "+40 778 739 245",
     email: "roxana.masgras@clinica.ro",
-    bio:
-      "Competențe în cardiologie generală și imagistică. Abordare empatică și dedicată, " +
-      "concentrată pe educația pacientului și prevenție activă.",
+    bio: [
+      "Dr. Bianca Piriianu-Masgras este medic specialist cardiolog, membru al Societății Române de Cardiologie, al Societății Europene de Cardiologie, al Asociației Europene de Imagistică Cardiovasculară și al Asociației Europene de Insuficiență Cardiacă. ",
+      "A absolvit Facultatea de Medicină Generală din cadrul UMF „Carol Davila” București în anul 2016 și a efectuat rezidențiatul la Institutul de Boli Cardiovasculare „Prof. Dr. C.C. Iliescu”. Deține competență în ecocardiografie Doppler și a participat la numeroase proiecte de sănătate publică, educație medicală și prezentări științifice.",
+      "În cadrul CardioCore, oferă consultații specializate, evaluări complete și planuri de tratament personalizate pentru pacienții cu afecțiuni cardiovasculare, punând accent pe comunicare empatică, prevenție și promovarea unui stil de viață sănătos.",
+    ],
   },
 ];
 

@@ -1,5 +1,6 @@
 // src/pages/team.jsx
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { TEAM, SITE } from "../data/site";
 import Seo from "../components/Seo.jsx";
 
@@ -8,7 +9,6 @@ const SPECIALTIES = [
   ...Array.from(new Set((TEAM || []).map((d) => d.specialty).filter(Boolean))),
 ];
 
-/* Avatar cu initiale */
 function Avatar({ name }) {
   const initials = name
     .split(" ")
@@ -122,7 +122,6 @@ export default function Team() {
                          shadow-[0_1px_0_rgba(0,0,0,0.04)]
                          hover:shadow-md transition"
             >
-              {/* Header */}
               <div className="flex items-start gap-4">
                 <Avatar name={d.name} />
                 <div className="min-w-0">
@@ -142,38 +141,34 @@ export default function Team() {
                 </div>
               </div>
 
-              {/* Content */}
               <div className="mt-4 flex-1">
-                {d.bio && (
-                  <p className="text-sm leading-relaxed text-[var(--ink)]/75">
-                    {d.bio}
-                  </p>
-                )}
-
-                {(d.tags?.length ?? 0) > 0 && (
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {d.tags.slice(0, 4).map((t) => (
-                      <li
-                        key={t}
-                        className="text-xs px-2.5 py-1 rounded-lg border
-                                   bg-[var(--brand)]/5 border-[var(--brand)]/20
-                                   text-[var(--brand)]"
+                {Array.isArray(d.bio) ? (
+                  <div className="space-y-2">
+                    {d.bio.map((line, i) => (
+                      <p
+                        key={i}
+                        className="text-sm leading-relaxed text-[var(--ink)]/75 text-justify"
                       >
-                        {t}
-                      </li>
+                        {line}
+                      </p>
                     ))}
-                  </ul>
+                  </div>
+                ) : (
+                  d.bio && (
+                    <p className="text-sm leading-relaxed text-[var(--ink)]/75 text-justify">
+                      {d.bio}
+                    </p>
+                  )
                 )}
               </div>
 
-              {/* Footer */}
               <div className="mt-6 pt-4 border-t border-black/10 flex items-center justify-between">
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="text-sm font-medium text-[var(--brand)] hover:underline"
                 >
                   Programează-te →
-                </a>
+                </Link>
 
                 <div className="text-xs text-[var(--brand)] flex items-center gap-2">
                   {d.phone && (
@@ -201,30 +196,26 @@ export default function Team() {
         {filtered.length === 0 && (
           <div className="mt-8 rounded-xl bg-white border p-6 text-center text-[var(--muted)]">
             Niciun rezultat pentru criteriile alese.
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="ml-2 text-[var(--brand)] hover:underline"
             >
               Scrie-ne direct →
-            </a>
+            </Link>
           </div>
         )}
       </section>
 
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-4 py-6">
-        <div
-          className="bg-[var(--brand)] text-white rounded-2xl px-6 py-5
-                        flex flex-col md:flex-row items-center justify-between gap-4
-                        ring-1 ring-white/10"
-        >
+        <div className="bg-[var(--brand)] text-white rounded-2xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4 ring-1 ring-white/10">
           <div className="text-base font-medium">
             Descoperă echipa noastră de specialiști dedicați.
           </div>
           <div className="flex items-center gap-3">
-            <a href="/contact" className="btn-ghost on-brand">
+            <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
-            </a>
+            </Link>
             <a
               href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
               className="btn-white"

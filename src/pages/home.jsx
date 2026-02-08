@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import EKGCard from "../components/ekg-card.jsx";
 import ReviewsCarousel from "../components/reviews-carousel.jsx";
 import { SITE, REVIEWS as REVIEWS_DATA } from "../data/site";
@@ -36,15 +37,16 @@ export default function Home() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="/contact" className="btn-brand">
+            <Link to="/contact" className="btn-brand">
               Programează-te acum
-            </a>
-            <a
-              href="/echipa"
+            </Link>
+
+            <Link
+              to="/echipa"
               className="px-4 py-2 rounded-md border text-sm hover:bg-white"
             >
               Descoperă echipa noastră
-            </a>
+            </Link>
           </div>
 
           <ul className="mt-8 grid grid-cols-2 md:grid-cols-2 gap-4">
@@ -108,9 +110,9 @@ export default function Home() {
               d: "Monitorizare 24–48h, raport și recomandări",
             },
           ].map((c) => (
-            <a
+            <Link
               key={c.t}
-              href="/servicii"
+              to="/servicii"
               className="group card p-4 hover:translate-y-0.5 transition-transform"
             >
               <div
@@ -134,7 +136,7 @@ export default function Home() {
               <div className="mt-3 text-sm text-[var(--brand)] group-hover:underline">
                 Detalii →
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -149,9 +151,11 @@ export default function Home() {
             Programează-te acum pentru un control cardiologic complet.
           </div>
           <div className="flex items-center gap-3">
-            <a href="/contact" className="btn-ghost on-brand">
+            <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
-            </a>
+            </Link>
+
+            {/* aici rămâne <a> fiindcă e link extern (tel:) */}
             <a
               href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
               className="btn-white"

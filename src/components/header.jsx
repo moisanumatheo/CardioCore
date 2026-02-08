@@ -4,7 +4,7 @@ import logoUrl from "/CardioCoreLogo.png";
 
 export default function Header() {
   const link = ({ isActive }) =>
-    `px-3 py-2 rounded-md text-sm transition-colors ${
+    `px-6 py-3 md:px-8 md:py-4 rounded-lg text-base md:text-lg font-medium transition-colors ${
       isActive
         ? "text-[var(--brand)]"
         : "text-[var(--muted)] hover:text-[var(--ink)]"

@@ -1,19 +1,19 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { SITE } from "../data/site";
-import Seo from "../components/Seo.jsx"; // ⬅️ SEO component
+import Seo from "../components/Seo.jsx";
 
 export default function Services() {
   const items = SITE.services;
 
-  // refs pe secțiuni reale: header, include, detalii
   const refHead = useRef([]);
   const refIncl = useRef([]);
   const refDet = useRef([]);
 
   useEffect(() => {
     function colsForWidth(w) {
-      if (w >= 1024) return 3; // lg:grid-cols-3
-      if (w >= 640) return 2; // sm:grid-cols-2
+      if (w >= 1024) return 3;
+      if (w >= 640) return 2;
       return 1;
     }
     function equalize() {
@@ -21,7 +21,7 @@ export default function Services() {
       [refHead, refIncl, refDet].forEach((r) =>
         r.current.forEach((el) => {
           if (el) el.style.minHeight = "0px";
-        })
+        }),
       );
       for (let i = 0; i < items.length; i += cols) {
         const H = refHead.current.slice(i, i + cols).filter(Boolean);
@@ -52,7 +52,6 @@ export default function Services() {
 
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
-      {/* SEO pentru pagina de servicii */}
       <Seo
         title="CardioCore"
         description="Servicii de cardiologie la CardioCore: consultație cardiologică, EKG de repaus, ecocardiografie Doppler, test de efort, Holter ECG și monitorizare tensională ambulatorie. Investigații complete bazate pe ghiduri actuale și interpretare realizată de medici specialiști."
@@ -91,12 +90,11 @@ export default function Services() {
               key={s.id}
               className="group card p-4 hover:shadow-sm transition flex flex-col h-full min-h-[540px]"
             >
-              {/* Header (ikon + titlu + descriere) */}
               <div ref={setRef(refHead, idx)}>
                 <div className="flex items-start gap-3">
                   <span
                     className="size-9 grid place-items-center rounded-lg text-[var(--brand)]
-                                   bg-[color:color-mix(in_srgb,var(--brand)_14%,transparent)]"
+                               bg-[color:color-mix(in_srgb,var(--brand)_14%,transparent)]"
                   >
                     <svg
                       viewBox="0 0 24 24"
@@ -116,10 +114,8 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* bară 1 */}
               <div className="my-4 border-t border-[color:color-mix(in_srgb,var(--ink)_12%,transparent)]" />
 
-              {/* Include */}
               <div ref={setRef(refIncl, idx)}>
                 <div className="text-xs font-medium text-[var(--ink)]/70 mb-1">
                   Include:
@@ -134,10 +130,8 @@ export default function Services() {
                 </ul>
               </div>
 
-              {/* bară 2 */}
               <div className="my-4 border-t border-[color:color-mix(in_srgb,var(--ink)_12%,transparent)]" />
 
-              {/* Detalii */}
               <div ref={setRef(refDet, idx)}>
                 <div className="text-xs font-medium text-[var(--ink)]/70 mb-1">
                   Detalii
@@ -186,14 +180,12 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* bară 3 */}
               <div className="my-4 border-t border-[color:color-mix(in_srgb,var(--ink)_12%,transparent)]" />
 
-              {/* Footer jos */}
               <div className="mt-auto flex justify-end">
-                <a href="/contact" className="btn-brand">
+                <Link to="/contact" className="btn-brand">
                   Programează-te
-                </a>
+                </Link>
               </div>
             </article>
           ))}
@@ -207,9 +199,9 @@ export default function Services() {
             Ai grijă de inima ta — fă primul pas azi.
           </div>
           <div className="flex items-center gap-3">
-            <a href="/contact" className="btn-ghost on-brand">
+            <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
-            </a>
+            </Link>
             <a
               href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
               className="btn-white"
@@ -220,7 +212,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* FAQ (din site.js) */}
+      {/* FAQ */}
       <section className="mx-auto max-w-7xl px-4 pb-12">
         <h2 className="text-xl font-semibold">Întrebări frecvente</h2>
         <div className="mt-4 grid md:grid-cols-2 gap-4">

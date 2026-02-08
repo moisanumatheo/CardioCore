@@ -4,7 +4,7 @@ import Seo from "../components/Seo.jsx";
 
 const API_URL = import.meta.env.DEV
   ? import.meta.env.VITE_API_URL || "http://localhost:3001"
-  : "";
+  : ""; // în prod rămâne "", deci /api/contact
 
 const MAP_COORDS = { lat: 44.49336776155981, lng: 26.123110214120203 };
 
@@ -16,6 +16,7 @@ export default function Contact() {
   async function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
+    setSent(false);
 
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -69,13 +70,23 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const data = await r.json();
+
+      // dacă backend-ul trimite non-JSON pe error, evităm crash
+      const text = await r.text();
+      let data = null;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = null;
+      }
+
       if (!r.ok || !data?.ok) {
         const msg =
           (data && (data.errors?.join("\n") || data.error)) ||
           "Eroare la trimitere.";
         throw new Error(msg);
       }
+
       form.reset();
       setSent(true);
     } catch (err) {
@@ -95,7 +106,7 @@ export default function Contact() {
     <div className="bg-[var(--bg)] text-[var(--ink)]">
       <Seo
         title="CardioCore"
-        description="Echipa medicală CardioCore este formată din medici cardiologi empatici, cu formare continuă și competențe variate, dedicați îngrijirii cardiologice moderne și personalizate pentru fiecare pacient."
+        description="Contact CardioCore: programări cardiologie, consult, EKG, ecocardiografie, test de efort, Holter ECG/TA."
       />
 
       {/* HERO */}
@@ -110,7 +121,7 @@ export default function Contact() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-12 grid lg:grid-cols-2 gap-8">
-        {/* COL STÂNGA: date + hartă */}
+        {/* COL STÂNGA */}
         <div className="space-y-4">
           <div className="rounded-xl bg-white border p-4">
             <div className="text-sm text-[var(--muted)]">Adresă</div>
@@ -153,7 +164,6 @@ export default function Contact() {
             </a>
           </div>
 
-          {/* HARTĂ: coordonatele din primul iframe, dar cu URL curat ca în al doilea */}
           <div className="rounded-2xl overflow-hidden border">
             <iframe
               title="CardioCore — Hartă"
@@ -169,7 +179,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* COL DREAPTA: formular */}
+        {/* COL DREAPTA */}
         <div className="rounded-2xl bg-white border p-5 md:p-6">
           {sent && (
             <div
@@ -190,7 +200,6 @@ export default function Contact() {
           )}
 
           <form onSubmit={handleSubmit} noValidate className="space-y-4">
-            {/* honeypot */}
             <input
               type="text"
               name="website"
@@ -319,14 +328,7 @@ export default function Contact() {
             </label>
 
             <div className="pt-4">
-              <div
-                className="
-                  bg-[var(--brand)] text-white
-                  rounded-[var(--radius)] px-4 py-4
-                  ring-1 ring-white/10
-                  flex flex-col sm:flex-row items-center justify-center gap-3
-                "
-              >
+              <div className="bg-[var(--brand)] text-white rounded-[var(--radius)] px-4 py-4 ring-1 ring-white/10 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <div className="flex items-center gap-3">
                   <button
                     type="submit"
