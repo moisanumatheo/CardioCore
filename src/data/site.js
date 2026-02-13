@@ -141,7 +141,7 @@ export const SITE = {
   pricing: {
     currency: "lei",
     updatedAt: "2026-01-09",
-    doctors: ["Dr. Andreea Cuculici", "Dr. Pîrîianu-Masgras Roxana-Bianca"],
+    doctors: ["Dr. Andreea Cuculici", "Dr. Pîrîianu-Masgras Bianca"],
     note: "Prețurile pot varia în funcție de caz. Confirmarea finală se face la programare.",
     items: [
       {

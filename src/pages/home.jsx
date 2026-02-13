@@ -20,13 +20,9 @@ export default function Home() {
       {/* HERO */}
       <section className="max-w-7xl mx-auto px-6 md:px-8 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <span className="inline-flex items-center gap-2 text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] ring-1 ring-[var(--brand)]/20">
+          <span className="inline-flex items-center gap-2 text-base font-large px-4 py-3 rounded-full bg-[var(--brand)]/10 text-[var(--brand)] ring-1 ring-[var(--brand)]/20">
             {SITE.name} — {SITE.slogan}
           </span>
-
-          <h1 className="font-title mt-4 text-4xl md:text-5xl leading-tight">
-            Cardiologie modernă cu suflet
-          </h1>
 
           <p className="mt-4 text-[15px] text-[var(--muted)] max-w-prose">
             Cardiologie modernă cu suflet – expertiză medicală, tehnologie de

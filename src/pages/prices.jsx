@@ -2,9 +2,20 @@ import { Link } from "react-router-dom";
 import { SITE } from "../data/site";
 import Seo from "../components/Seo.jsx";
 
+function PriceCell({ value, currency }) {
+  return (
+    <span className="font-medium text-[var(--ink)]">
+      {typeof value === "number" ? `${value} ${currency}` : "—"}
+    </span>
+  );
+}
+
 export default function Preturi() {
   const p = SITE.pricing;
-  const [docA, docB] = p.doctors || [];
+  const [docA, docB] = p?.doctors || [];
+
+  const items = p?.items || [];
+  const currency = p?.currency || "lei";
 
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
@@ -24,46 +35,66 @@ export default function Preturi() {
             {p.note}
           </p>
         )}
-
-        {p?.updatedAt && (
-          <div className="mt-3 text-xs text-[var(--muted)]">
-            Actualizat: {p.updatedAt}
-          </div>
-        )}
       </section>
 
-      {/* TABLE */}
       <section className="mx-auto max-w-7xl px-4 pb-12">
-        <div className="card p-4 md:p-6 overflow-x-auto">
-          <table className="min-w-[760px] w-full text-sm">
-            <thead>
-              <tr className="text-left border-b">
-                <th className="py-3 pr-4">Serviciu</th>
-                <th className="py-3 pr-4 whitespace-nowrap">
-                  {docA || "Medic"}
-                </th>
-                <th className="py-3 pr-4 whitespace-nowrap">
-                  {docB || "Medic"}
-                </th>
-              </tr>
-            </thead>
+        {/* ===== MOBILE: Cards (no horizontal scroll) ===== */}
+        <div className="md:hidden space-y-3">
+          {items.map((it) => (
+            <div key={it.service} className="card p-4">
+              <div className="font-medium leading-snug">{it.service}</div>
 
-            <tbody>
-              {(p?.items || []).map((it) => (
-                <tr key={it.service} className="border-b last:border-b-0">
-                  <td className="py-3 pr-4 text-[var(--ink)]">{it.service}</td>
+              <div className="mt-3 grid grid-cols-1 gap-2">
+                <div className="flex items-center justify-between rounded-lg border bg-white px-3 py-2">
+                  <span className="text-xs text-[var(--muted)]">
+                    {docA || "Medic"}
+                  </span>
+                  <PriceCell value={it.a} currency={currency} />
+                </div>
 
-                  <td className="py-3 pr-4 whitespace-nowrap text-[var(--muted)]">
-                    {typeof it.a === "number" ? `${it.a} ${p.currency}` : "—"}
-                  </td>
+                <div className="flex items-center justify-between rounded-lg border bg-white px-3 py-2">
+                  <span className="text-xs text-[var(--muted)]">
+                    {docB || "Medic"}
+                  </span>
+                  <PriceCell value={it.b} currency={currency} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
 
-                  <td className="py-3 pr-4 whitespace-nowrap text-[var(--muted)]">
-                    {typeof it.b === "number" ? `${it.b} ${p.currency}` : "—"}
-                  </td>
+        {/* ===== DESKTOP: Table ===== */}
+        <div className="hidden md:block card p-4 md:p-6">
+          <div className="overflow-x-auto">
+            <table className="min-w-[860px] w-full text-sm">
+              <thead>
+                <tr className="text-left border-b">
+                  <th className="py-3 pr-6">Serviciu</th>
+                  <th className="py-3 pr-6 whitespace-nowrap">
+                    {docA || "Medic"}
+                  </th>
+                  <th className="py-3 pr-6 whitespace-nowrap">
+                    {docB || "Medic"}
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {items.map((it) => (
+                  <tr key={it.service} className="border-b last:border-b-0">
+                    <td className="py-3 pr-6 text-[var(--ink)]">
+                      {it.service}
+                    </td>
+                    <td className="py-3 pr-6 whitespace-nowrap text-[var(--muted)]">
+                      {typeof it.a === "number" ? `${it.a} ${currency}` : "—"}
+                    </td>
+                    <td className="py-3 pr-6 whitespace-nowrap text-[var(--muted)]">
+                      {typeof it.b === "number" ? `${it.b} ${currency}` : "—"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* CTA */}
