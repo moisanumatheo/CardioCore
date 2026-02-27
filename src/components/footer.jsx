@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { SITE } from "../data/site";
 import logoUrl from "/CardioCoreLogo.png";
 export default function Footer() {
@@ -114,9 +115,9 @@ export default function Footer() {
             © {new Date().getFullYear()} {SITE.name}. Toate drepturile
             rezervate.
           </span>
-          <a href="/contact" className="hover:underline">
+          <Link to="/contact" className="hover:underline">
             Contact & Programări
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

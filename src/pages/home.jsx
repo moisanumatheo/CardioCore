@@ -14,7 +14,7 @@ export default function Home() {
       {/* SEO pentru homepage */}
       <Seo
         title="CardioCore"
-        description="CardioCore - clinică de cardiologie în București. Cardiologie modernă cu suflet: consult cardiologic, EKG, ecocardiografie Doppler, test de efort, Holter ECG și monitorizare tensională. Programări rapide și grijă autentică pentru fiecare pacient."
+        description="CardioCore - clinică de cardiologie în București. Cardiologie modernă cu suflet: consult cardiologic, EKG, ecocardiografie Doppler, test de efort, Holter EKG și monitorizare tensională. Programări rapide și grijă autentică pentru fiecare pacient."
       />
 
       {/* HERO */}
@@ -53,7 +53,7 @@ export default function Home() {
               },
               {
                 k: "Investigații complete",
-                t: "EKG, ecocardiografie Doppler, test de efort, Holter ECG și TA ambulatorie/24 h.",
+                t: "EKG, ecocardiografie Doppler, test de efort, Holter EKG și TA ambulatorie/24 h.",
               },
               {
                 k: "Precizie & tehnologie",
@@ -102,7 +102,7 @@ export default function Home() {
               d: "Structuri și funcție cardiacă, color & spectral",
             },
             {
-              t: "Holter ECG/TA",
+              t: "Holter EKG/TA",
               d: "Monitorizare 24–48h, raport și recomandări",
             },
           ].map((c) => (

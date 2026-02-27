@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ConsentBanner from "./components/ConsentBanner.jsx";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Home from "./pages/home";
@@ -21,6 +22,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <ConsentBanner />
     </BrowserRouter>
   );
 }

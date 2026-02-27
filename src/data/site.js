@@ -1,4 +1,3 @@
-// src/data/site.js
 export const SITE = {
   name: "CardioCore",
   slogan: "Pentru inima ta",
@@ -29,7 +28,6 @@ export const SITE = {
     tiktok: "#",
   },
 
-  // ——— Servicii (folosite în pagina /servicii) ———
   services: [
     {
       id: "consult",
@@ -86,7 +84,7 @@ export const SITE = {
     },
     {
       id: "holter",
-      title: "Monitorizare Holter ECG (24–48h)",
+      title: "Monitorizare Holter EKG (24–48h)",
       desc: "Înregistrare continuă a activității electrice a inimii, pentru identificarea tulburărilor de ritm/conducere.",
       bullets: [
         "Montare aparat portabil",
@@ -109,7 +107,6 @@ export const SITE = {
     },
   ],
 
-  // ——— FAQ pentru pagina Servicii ———
   faqServices: [
     {
       q: "Este nevoie de trimitere de la medicul de familie?",
@@ -137,7 +134,6 @@ export const SITE = {
     },
   ],
 
-  // ——— Prețuri (pagina /preturi) ———
   pricing: {
     currency: "lei",
     updatedAt: "2026-01-09",
@@ -208,7 +204,6 @@ export const SITE = {
   },
 };
 
-// ——— Echipa ———
 export const TEAM = [
   {
     id: "cuculici",
@@ -241,7 +236,6 @@ export const TEAM = [
   },
 ];
 
-// ——— Recenzii ———
 export const REVIEWS = [
   { text: "Profesionalism și calm. Fără grabă.", author: "M. D., pacient" },
   {
@@ -250,3 +244,62 @@ export const REVIEWS = [
   },
   { text: "Am depistat din timp datorită testului de efort.", author: "C. I." },
 ];
+
+export const LEGAL = {
+  privacyTitle:
+    "Politica de prelucrare și protecție a datelor cu caracter personal la nivel de Companie",
+
+  companyHeader: SITE.name,
+
+  privacyParagraphs: [
+    "Principii:",
+    "1. Prelucrarea datelor personale de către Companie este guvernată de acordarea consimțământului de către Persoana vizată și de necesitatea furnizării actului medical.",
+    "2. Terții, care furnizează date personale în virtutea raporturilor juridice pe care le au cu Compania, poartă răspunderea integrală a prelucrării datelor personale puse la dispoziția Companiei. Orice eventuală prelucrare a datelor personale de către Companie se va face în virtutea raportului juridic în care terțul și Compania s-au înscris și se prezumă că are la bază consimțământul Persoanei vizate dat terțului furnizor, sub sancțiunea de daune interese.",
+
+    "Părți implicate:",
+    "1. Compania – Operatorul (CardioCore)",
+    "2. Personalul Angajat: Persoana care utilizează sau prelucrează datele cu caracter personal care și-a asumed prezenta procedură și pe care și-a însușit-o prin semnătură (personal medical și administrativ).",
+    "3. Persoana împuternicită: desemnată în condițiile legii să supravegheze prelucrarea datelor cu caracter personal din cadrul Companiei (persoană fizică) sau un terț contractat (persoană juridică).",
+    "4. Beneficiari indirecți: Terți Beneficiari/Furnizori (laboratoare partenere, mentenanță software).",
+    "5. Persoana vizată: Persoana fizică (Pacientul) care pune la dispoziția Companiei date cu caracter personal.",
+
+    "Articolul 1",
+    "Prezentul document stabilește politica de prelucrare/protecție a datelor cu caracter personal și modalitatea de acces a persoanelor vizate la datele personale în conformitate cu Regulamentul (UE) 2016/679 (denumit generic Regulamentul sau GDPR).",
+
+    "Articolul 2. Declarația de prelucrare.",
+    "Compania prelucrează în îndeplinirea relațiilor contractuale și a serviciilor pe care le prestează, după caz, următoarele date cu caracter personal: [Categoria 1 - date de identificare]: nume, prenume, adresă, CNP - pentru îndeplinirea obligațiilor legale în raport cu autoritățile de stat, număr de telefon, funcție, seria și numărul cărții de identitate, adresă de e-mail, date audio vizuale a persoanei vizate, adresa IP a dispozitivelor electronice [Categoria 2 - date medicale/indirecte]: istoric medical, diagnostice, rezultate EKG/ecografii, date financiare, date socio-demografice, date despre comportamentul online sau furnizate în urma unui apel telefonic (accesări, preferințe, solicitări, etc.).",
+
+    "Articolul 3. Prelucrarea datelor.",
+    "Compania prelucrează date personale doar în îndeplinirea obiectului de activitate și în scopul furnizării serviciilor medicale de cardiologie puse la dispoziția consumatorilor, solicitate și/sau prestate conform obiectului de activitate, strict în scopul îndeplinirii obiectului raporturilor juridice asumate (prestări de servicii, rapoarte de muncă, etc.) și/sau pentru campanii de marketing în vederea îmbunătățirii și dezvoltării produselor și serviciilor pe care le oferă, bazate pe interesul legitim al părților și/sau public, în funcție de situație, și doar în urma consimțământului persoanei vizate.",
+
+    "Articolul 4. Date sensibile.",
+    "Compania înregistrează date privind sănătatea pacientului necesare diagnosticului și tratamentului, dar nu colectează date privind etnia, credințele religioase sau politice, cu excepția cazurilor în care acest lucru este absolut necesar sau cerut de legea sănătății.",
+
+    "Articolul 5. Persoana împuternicită.",
+    "Compania a numit/contractat un Ofițer/Persoană împuternicită pentru Protecția Datelor cu caracter personal din cadrul Companiei este Responsabilul DPO și are în principal următoarele obligații: (1) Informarea/consilierea; (2) Monitorizarea conformității; (3) Consilierea DPIA; (4) Cooperarea cu ANSPDCP; (5) Contact pacienți; (6) Registrul prelucrărilor; (7) Instruire personal; (8) Audit securitate.",
+
+    "Articolul 6. Stocarea și prelucrarea datelor cu caracter personal.",
+    "Compania stochează datele puse la dispoziție de către Persoana vizată, după caz, pe suport de hârtie (dosar medical), pe suport electronic pe calculatoarele și serverele proprii sau prin apelarea la servicii de cloud securizat.",
+
+    "Articolul 7. Perioada de stocare, prelucrare, utilizare a datelor cu caracter personal.",
+    "Compania stochează/prelucrează/utilizează datele pe durata necesară actului medical și conform legislației în vigoare, iar perioada de stocare a datelor cu caracter personal nu este mai mică de 10 ani pentru fișele medicale.",
+
+    "Articolul 8. Consimțământul persoanei vizate.",
+    "Acordul persoanei vizate se obține prin aducerea la cunoștință a prezentei Politici și confirmarea expresă prin semnătură olografă sau digitală.",
+
+    "Articolul 9. Înstrăinarea datelor cu caracter personal.",
+    "Compania poate transmite datele personale către autorități publice (CNAS, DSP), laboratoare partenere sau furnizori de servicii IT, strict sub clauze de confidențialitate.",
+
+    "Articolul 10. Acordul persoanei vizate.",
+    "Acordul persoanei vizate pentru scopuri auxiliare medicale se obține prin aducerea la cunoștință a prezentei Politici și exprimarea voinței libere.",
+
+    "Art. 11. Obligația de confidențialitate.",
+    "Compania se angajează să respecte confidențialitatea datelor personale și a secretului profesional medical conform legii pacientului.",
+
+    "Art. 12. Drepturile persoanei vizate.",
+    "Persoana vizată are următoarele drepturi: de acces, de rectificare, de ștergere (în limitele legii), de restricționare, de portabilitate și de opoziție.",
+
+    "Art. 13. Exercitarea drepturilor persoanei vizate.",
+    "Persoana vizată își poate exercita drepturile legale prin transmiterea unei solicitări scrise către DPO la adresa dpo@cardiocore.ro.",
+  ],
+};
