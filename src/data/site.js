@@ -252,6 +252,7 @@ export const LEGAL = {
   companyHeader: SITE.name,
 
   privacyParagraphs: [
+    "Folosim cookie-uri necesare pentru funcționarea site-ului. Prin continuare, confirmi că ai citit și accepți Politica de prelucrare a datelor și Politica de cookie-uri.",
     "Principii:",
     "1. Prelucrarea datelor personale de către Companie este guvernată de acordarea consimțământului de către Persoana vizată și de necesitatea furnizării actului medical.",
     "2. Terții, care furnizează date personale în virtutea raporturilor juridice pe care le au cu Compania, poartă răspunderea integrală a prelucrării datelor personale puse la dispoziția Companiei. Orice eventuală prelucrare a datelor personale de către Companie se va face în virtutea raportului juridic în care terțul și Compania s-au înscris și se prezumă că are la bază consimțământul Persoanei vizate dat terțului furnizor, sub sancțiunea de daune interese.",
