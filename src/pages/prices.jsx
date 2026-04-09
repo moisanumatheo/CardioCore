@@ -108,12 +108,17 @@ export default function Preturi() {
               Contactează-ne
             </Link>
 
-            <a
-              href={`tel:${String(SITE.phone || "").replace(/\s+/g, "")}`}
-              className="btn-white"
-            >
-              {SITE.phone}
-            </a>
+            <div className="flex flex-col gap-2">
+              {SITE.phone?.map((phone) => (
+                <a
+                  key={phone}
+                  href={`tel:${phone.replace(/\s+/g, "")}`}
+                  className="btn-white"
+                >
+                  {phone}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>

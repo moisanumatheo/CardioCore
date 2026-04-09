@@ -4,9 +4,7 @@ import Seo from "../components/Seo.jsx";
 
 const API_URL = import.meta.env.DEV
   ? import.meta.env.VITE_API_URL || "http://localhost:3001"
-  : ""; // în prod rămâne "", deci /api/contact
-
-const MAP_COORDS = { lat: 44.49336776155981, lng: 26.123110214120203 };
+  : "";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -21,10 +19,8 @@ export default function Contact() {
     const form = e.currentTarget;
     const fd = new FormData(form);
 
-    // honeypot
     if (fd.get("website")) return;
 
-    // valori + validări
     const name = (fd.get("name") || "").toString().trim();
     const phone = (fd.get("phone") || "").toString().replace(/\s+/g, "");
     const email = (fd.get("email") || "").toString().trim();
@@ -71,7 +67,6 @@ export default function Contact() {
         body: JSON.stringify(payload),
       });
 
-      // dacă backend-ul trimite non-JSON pe error, evităm crash
       const text = await r.text();
       let data = null;
       try {
@@ -99,7 +94,6 @@ export default function Contact() {
     }
   }
 
-  const phoneLink = SITE.phone.replace(/\s+/g, "");
   const services = (SITE.services || []).map((s) => s.title);
 
   return (
@@ -127,7 +121,7 @@ export default function Contact() {
             <div className="text-sm text-[var(--muted)]">Adresă</div>
             <div className="font-medium">{SITE.address?.line}</div>
             <a
-              href={`https://www.google.com/maps?q=${MAP_COORDS.lat},${MAP_COORDS.lng}`}
+              href={SITE.address?.mapsEmbedUrl}
               target="_blank"
               rel="noopener"
               className="mt-1 inline-block text-[var(--brand)] hover:underline text-sm"
@@ -146,15 +140,20 @@ export default function Contact() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
-            <a
-              href={`tel:${phoneLink}`}
-              className="rounded-xl bg-white border p-4 hover:shadow-sm transition"
-            >
+            <div className="rounded-xl bg-white border p-4">
               <div className="text-sm text-[var(--muted)]">Telefon</div>
-              <div className="font-medium text-[var(--brand)]">
-                {SITE.phone}
+              <div className="mt-1 flex flex-col gap-1">
+                {SITE.phone?.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone.replace(/\s+/g, "")}`}
+                    className="font-medium text-[var(--brand)] hover:underline"
+                  >
+                    {phone}
+                  </a>
+                ))}
               </div>
-            </a>
+            </div>
             <a
               href={`mailto:${SITE.email}`}
               className="rounded-xl bg-white border p-4 hover:shadow-sm transition"
@@ -167,7 +166,7 @@ export default function Contact() {
           <div className="rounded-2xl overflow-hidden border">
             <iframe
               title="CardioCore — Hartă"
-              src={`https://www.google.com/maps?q=${MAP_COORDS.lat},${MAP_COORDS.lng}&hl=ro&z=17&output=embed`}
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d355.75969776883977!2d26.1229844!3d44.4930771!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b203c48eaf9361%3A0x8bbebe3b85ddc5e!2sCardioCore!5e0!3m2!1sen!2sro!4v1775732532727!5m2!1sen!2sro"
               width="100%"
               height="280"
               loading="lazy"
@@ -338,13 +337,6 @@ export default function Contact() {
                   >
                     {loading ? "Se trimite..." : "Programează-te"}
                   </button>
-
-                  <a
-                    href={`tel:${(SITE.phone || "+40 123 456 789").replace(/\s+/g, "")}`}
-                    className="btn-white no-underline"
-                  >
-                    Sună acum
-                  </a>
                 </div>
               </div>
             </div>

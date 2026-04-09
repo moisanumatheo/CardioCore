@@ -151,13 +151,17 @@ export default function Home() {
               Contactează-ne
             </Link>
 
-            {/* aici rămâne <a> fiindcă e link extern (tel:) */}
-            <a
-              href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
-              className="btn-white"
-            >
-              {SITE.phone}
-            </a>
+            <div className="flex flex-col gap-2">
+              {SITE.phone?.map((phone) => (
+                <a
+                  key={phone}
+                  href={`tel:${phone.replace(/\s+/g, "")}`}
+                  className="btn-white"
+                >
+                  {phone}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>

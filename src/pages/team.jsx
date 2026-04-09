@@ -171,14 +171,27 @@ export default function Team() {
                 </Link>
 
                 <div className="text-xs text-[var(--brand)] flex items-center gap-2">
-                  {d.phone && (
-                    <a
-                      href={`tel:${d.phone.replace(/\s+/g, "")}`}
-                      className="hover:underline"
-                    >
-                      {d.phone}
-                    </a>
-                  )}
+                  {(() => {
+                    const customPhone =
+                      filtered.findIndex(
+                        (x) => (x.id ?? x.name) === (d.id ?? d.name),
+                      ) === 0
+                        ? SITE.phone?.[1]
+                        : filtered.findIndex(
+                              (x) => (x.id ?? x.name) === (d.id ?? d.name),
+                            ) === 1
+                          ? SITE.phone?.[0]
+                          : d.phone;
+
+                    return customPhone ? (
+                      <a
+                        href={`tel:${customPhone.replace(/\s+/g, "")}`}
+                        className="hover:underline"
+                      >
+                        {customPhone}
+                      </a>
+                    ) : null;
+                  })()}
                   {d.phone && d.email && (
                     <span className="text-black/20">·</span>
                   )}
@@ -216,12 +229,17 @@ export default function Team() {
             <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
             </Link>
-            <a
-              href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
-              className="btn-white"
-            >
-              {SITE.phone}
-            </a>
+            <div className="flex flex-col gap-2">
+              {SITE.phone?.map((phone) => (
+                <a
+                  key={phone}
+                  href={`tel:${phone.replace(/\s+/g, "")}`}
+                  className="btn-white"
+                >
+                  {phone}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>

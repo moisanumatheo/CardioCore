@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { SITE } from "../data/site";
 import logoUrl from "/CardioCoreLogo.png";
 export default function Footer() {
-  const phoneLink = SITE.phone.replace(/\s+/g, "");
-
   return (
     <footer className="border-t bg-white mt-12">
       <div className="mx-auto max-w-7xl px-6 py-10 grid gap-8 md:grid-cols-4 text-sm">
@@ -22,10 +20,19 @@ export default function Footer() {
         <div>
           <div className="font-medium mb-2">Contact</div>
           <div className="space-y-1 text-[var(--muted)]">
-            <div>
-              <a href={`tel:${phoneLink}`} className="hover:underline">
-                {SITE.phone}
-              </a>
+            <div className="flex flex-col gap-1">
+              {SITE.phone.map((phone) => {
+                const phoneLink = phone.replace(/\s+/g, "");
+                return (
+                  <a
+                    key={phone}
+                    href={`tel:${phoneLink}`}
+                    className="hover:underline"
+                  >
+                    {phone}
+                  </a>
+                );
+              })}
             </div>
             <div>
               <a href={`mailto:${SITE.email}`} className="hover:underline">

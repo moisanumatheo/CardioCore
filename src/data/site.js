@@ -11,20 +11,22 @@ export const SITE = {
     line1: "Bulevardul Pipera, nr. 1-5A, bl. 4, sc. A, ap. 3",
     line2: "Voluntari, județ Ilfov",
     line: "Ivory Residence — Bulevardul Pipera, nr. 1-5A, bl. 4, sc. A, parter, ap. 3, Voluntari, județ Ilfov", // fallback pt alte locuri
-    mapsUrl: "https://maps.app.goo.gl/uiNpZwuSuRQHQntu8",
-    coords: { lat: 44.49336776155981, lng: 26.123110214120203 },
+    mapsUrl: "https://maps.app.goo.gl/FsGfX4GeiRAdyCF68",
+    mapsEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d355.75969780959934!2d26.122984449073787!3d44.4930770933184!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b203c48eaf9361%3A0x8bbebe3b85ddc5e!2sCardioCore!5e0!3m2!1sro!2sus!4v1774247925346!5m2!1sro!2sus",
   },
 
   hours: [
-    { days: "Luni–Vineri", time: "14:00–20:00" },
+    { days: "Luni–Vineri", time: "15:00–20:00" },
     { days: "Sâmbătă", time: "09:00–14:00" },
   ],
-  phone: "+40 778 739 245",
+  phone: ["+40 758 640 016", "+40 778 739 245"],
   whatsapp: true,
   email: "programari@cardiocore.ro",
   social: {
-    facebook: "#",
-    instagram: "#",
+    facebook:
+      "https://www.facebook.com/profile.php?id=61587815283527&locale=ro_RO",
+    instagram: "https://www.instagram.com/clinica.cardiocore/",
     tiktok: "#",
   },
 
