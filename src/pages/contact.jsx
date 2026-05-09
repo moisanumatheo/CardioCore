@@ -99,8 +99,9 @@ export default function Contact() {
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
       <Seo
-        title="CardioCore"
-        description="Contact CardioCore: programări cardiologie, consult, EKG, ecocardiografie, test de efort, Holter ECG/TA."
+        title="Programări Cardiologie București | Contact – CardioCore"
+        description="Programează-te la CardioCore – clinică cardiologie București, Voluntari (zona Pipera). Consultații cu Dr. Cuculici Andreea și Dr. Pîrîianu-Masgras Bianca. Tel: +40 758 640 016. Completează formularul online pentru programare rapidă."
+        canonical="https://cardiocore.ro/contact"
       />
 
       {/* HERO */}

@@ -9,6 +9,53 @@ const SPECIALTIES = [
   ...Array.from(new Set((TEAM || []).map((d) => d.specialty).filter(Boolean))),
 ];
 
+// Schema.org – Physician (ajută când cineva caută "Dr. Cuculici Andreea cardiolog")
+const TEAM_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Physician",
+      "@id": "https://cardiocore.ro/echipa#cuculici",
+      name: "Dr. Cuculici Andreea",
+      honorificPrefix: "Dr.",
+      jobTitle: "Medic primar cardiolog",
+      description:
+        "Medic primar cardiolog, Doctor în Medicină, cu competențe în ecocardiografie transesofagiană și ecografie vasculară Doppler. Activează la Institutul de Boli Cardiovasculare „Prof. Dr. C.C. Iliescu” București.",
+      medicalSpecialty: {
+        "@type": "MedicalSpecialty",
+        name: "Cardiology",
+      },
+      worksFor: {
+        "@type": "MedicalOrganization",
+        "@id": "https://cardiocore.ro/#organization",
+        name: "CardioCore",
+      },
+      url: "https://cardiocore.ro/echipa",
+      telephone: "+40778739245",
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://cardiocore.ro/echipa#pirianu",
+      name: "Dr. Pîrîianu-Masgras Bianca",
+      honorificPrefix: "Dr.",
+      jobTitle: "Medic specialist cardiolog",
+      description:
+        "Medic specialist cardiolog, cu competență în ecocardiografie Doppler. Membră a Societății Române de Cardiologie și a Societății Europene de Cardiologie.",
+      medicalSpecialty: {
+        "@type": "MedicalSpecialty",
+        name: "Cardiology",
+      },
+      worksFor: {
+        "@type": "MedicalOrganization",
+        "@id": "https://cardiocore.ro/#organization",
+        name: "CardioCore",
+      },
+      url: "https://cardiocore.ro/echipa",
+      telephone: "+40758640016",
+    },
+  ],
+};
+
 function Avatar({ name }) {
   const initials = name
     .split(" ")
@@ -53,8 +100,10 @@ export default function Team() {
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
       <Seo
-        title="CardioCore"
-        description="Echipa medicală CardioCore este formată din medici cardiologi empatici, cu formare continuă și competențe variate."
+        title="Dr. Cuculici Andreea & Dr. Pîrîianu-Masgras Bianca | Cardiologi București – CardioCore"
+        description="Echipa CardioCore: Dr. Cuculici Andreea (medic primar cardiolog, Doctor în Medicină, ecocardiografie, ecografie vasculară Doppler) și Dr. Pîrîianu-Masgras Bianca (medic specialist cardiolog, Doppler). Cardiologi cu experiență în București, zona Voluntari–Pipera."
+        canonical="https://cardiocore.ro/echipa"
+        jsonLd={TEAM_SCHEMA}
       />
 
       {/* HERO */}

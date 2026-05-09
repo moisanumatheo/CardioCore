@@ -20,8 +20,9 @@ export default function Preturi() {
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
       <Seo
-        title="CardioCore — Prețuri"
-        description="Lista de prețuri CardioCore pentru consultații și investigații cardiologice."
+        title="Prețuri Cardiologie București | Consultații, EKG, Ecocardiografie – CardioCore"
+        description="Prețuri consultații și investigații cardiologice la CardioCore București: EKG 100 lei, consult cardiologic 300 lei, ecocardiografie Doppler 400 lei, Holter EKG 350–700 lei, test de efort 400 lei. Lista completă de prețuri."
+        canonical="https://cardiocore.ro/preturi"
       />
 
       {/* HERO */}

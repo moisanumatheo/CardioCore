@@ -3,6 +3,81 @@ import { Link } from "react-router-dom";
 import { SITE } from "../data/site";
 import Seo from "../components/Seo.jsx";
 
+// Schema.org – MedicalProcedure catalog (ajută la căutări "EKG București", "ecocardiografie Voluntari" etc.)
+const SERVICES_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "MedicalOrganization",
+  "@id": "https://cardiocore.ro/#organization",
+  name: "CardioCore",
+  url: "https://cardiocore.ro",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicii Cardiologice CardioCore București",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        position: 1,
+        itemOffered: {
+          "@type": "MedicalProcedure",
+          name: "Consult cardiologic",
+          description:
+            "Evaluare clinică completă pentru identificarea factorilor de risc cardiovascular și stabilirea unui plan de monitorizare personalizat.",
+        },
+      },
+      {
+        "@type": "Offer",
+        position: 2,
+        itemOffered: {
+          "@type": "MedicalProcedure",
+          name: "Electrocardiogramă (EKG) de repaus",
+          description:
+            "Înregistrarea activității electrice a inimii în 12 derivații cu interpretare de medic cardiolog.",
+        },
+      },
+      {
+        "@type": "Offer",
+        position: 3,
+        itemOffered: {
+          "@type": "MedicalProcedure",
+          name: "Ecocardiografie Doppler color și spectral",
+          description:
+            "Investigație imagistică neinvazivă cu evaluarea structurii și funcției cardiace prin ecografie transtoracică și Doppler.",
+        },
+      },
+      {
+        "@type": "Offer",
+        position: 4,
+        itemOffered: {
+          "@type": "MedicalProcedure",
+          name: "Test de efort EKG",
+          description:
+            "Evaluarea reacției inimii la efort fizic progresiv, utilă în diagnosticul bolii coronariene și valvulopatiilor.",
+        },
+      },
+      {
+        "@type": "Offer",
+        position: 5,
+        itemOffered: {
+          "@type": "MedicalProcedure",
+          name: "Monitorizare Holter EKG 24–48h",
+          description:
+            "Înregistrare continuă a activității electrice a inimii pentru identificarea tulburărilor de ritm și conducere.",
+        },
+      },
+      {
+        "@type": "Offer",
+        position: 6,
+        itemOffered: {
+          "@type": "MedicalProcedure",
+          name: "Monitorizare ambulatorie tensiune arterială 24h",
+          description:
+            "Monitorizarea tensiunii arteriale pe parcursul a 24 de ore pentru diagnosticarea corectă a hipertensiunii.",
+        },
+      },
+    ],
+  },
+};
+
 export default function Services() {
   const items = SITE.services;
 
@@ -53,8 +128,10 @@ export default function Services() {
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
       <Seo
-        title="CardioCore"
-        description="Servicii de cardiologie la CardioCore: consultație cardiologică, EKG de repaus, ecocardiografie Doppler, test de efort, Holter ECG și monitorizare tensională ambulatorie. Investigații complete bazate pe ghiduri actuale și interpretare realizată de medici specialiști."
+        title="Servicii Cardiologie București | EKG, Ecocardiografie, Holter, Test Efort – CardioCore"
+        description="Servicii de cardiologie la CardioCore București (Voluntari–Pipera): consultație cardiologică, EKG de repaus, ecocardiografie Doppler color și spectral, test de efort, Holter EKG 24–48h și monitorizare TA ambulatorie. Medici specialiști."
+        canonical="https://cardiocore.ro/servicii"
+        jsonLd={SERVICES_SCHEMA}
       />
 
       {/* HERO */}

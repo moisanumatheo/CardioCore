@@ -8,13 +8,79 @@ const REVIEWS = REVIEWS_DATA.map((r) =>
   r.author ? `${r.text} — ${r.author}` : r.text,
 );
 
+const HOME_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["MedicalOrganization", "LocalBusiness"],
+      "@id": "https://cardiocore.ro/#organization",
+      name: "CardioCore",
+      alternateName: "Clinica CardioCore",
+      description:
+        "Clinică de cardiologie în București și Voluntari – consultații cardiologice, EKG, ecocardiografie Doppler, test de efort, Holter EKG și monitorizare tensională ambulatorie.",
+      url: "https://cardiocore.ro",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://cardiocore.ro/CardioCoreLogo.png",
+      },
+      image: "https://cardiocore.ro/og-card.png",
+      telephone: ["+40758640016", "+40778739245"],
+      email: "programari@cardiocore.ro",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Bulevardul Pipera, nr. 1-5A, bl. 4, sc. A, ap. 3",
+        addressLocality: "Voluntari",
+        addressRegion: "Ilfov",
+        addressCountry: "RO",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 44.4930771,
+        longitude: 26.1229844,
+      },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "15:00",
+          closes: "20:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: "Saturday",
+          opens: "09:00",
+          closes: "14:00",
+        },
+      ],
+      medicalSpecialty: "Cardiology",
+      priceRange: "100–700 lei",
+      currenciesAccepted: "RON",
+      hasMap: "https://maps.app.goo.gl/FsGfX4GeiRAdyCF68",
+      sameAs: [
+        "https://www.facebook.com/profile.php?id=61587815283527",
+        "https://www.instagram.com/clinica.cardiocore/",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://cardiocore.ro/#website",
+      url: "https://cardiocore.ro",
+      name: "CardioCore",
+      description: "Clinică de cardiologie în București",
+      publisher: { "@id": "https://cardiocore.ro/#organization" },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
       {/* SEO pentru homepage */}
       <Seo
-        title="CardioCore"
-        description="CardioCore - clinică de cardiologie în București. Cardiologie modernă cu suflet: consult cardiologic, EKG, ecocardiografie Doppler, test de efort, Holter EKG și monitorizare tensională. Programări rapide și grijă autentică pentru fiecare pacient."
+        title="CardioCore | Clinică Cardiologie București – Consultații, EKG, Ecocardiografie"
+        description="CardioCore – clinică de cardiologie în București, Voluntari (zona Pipera). Consultații cu Dr. Cuculici Andreea și Dr. Pîrîianu-Masgras Bianca: EKG, ecocardiografie Doppler, test de efort, Holter EKG și TA. Programare rapidă."
+        canonical="https://cardiocore.ro/"
+        jsonLd={HOME_SCHEMA}
       />
 
       {/* HERO */}
