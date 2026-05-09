@@ -141,20 +141,26 @@ export default function Contact() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
+            {/* Telefoane cu numele doctorilor */}
             <div className="rounded-xl bg-white border p-4">
-              <div className="text-sm text-[var(--muted)]">Telefon</div>
-              <div className="mt-1 flex flex-col gap-1">
-                {SITE.phone?.map((phone) => (
-                  <a
-                    key={phone}
-                    href={`tel:${phone.replace(/\s+/g, "")}`}
-                    className="font-medium text-[var(--brand)] hover:underline"
-                  >
-                    {phone}
-                  </a>
+              <div className="text-sm text-[var(--muted)] mb-2">Telefon</div>
+              <div className="flex flex-col gap-2">
+                {SITE.phones?.map((p) => (
+                  <div key={p.number}>
+                    <div className="text-[11px] text-[var(--muted)]">
+                      {p.doctor}
+                    </div>
+                    <a
+                      href={`tel:${p.number.replace(/\s+/g, "")}`}
+                      className="font-medium text-[var(--brand)] hover:underline"
+                    >
+                      {p.number}
+                    </a>
+                  </div>
                 ))}
               </div>
             </div>
+
             <a
               href={`mailto:${SITE.email}`}
               className="rounded-xl bg-white border p-4 hover:shadow-sm transition"
@@ -329,16 +335,14 @@ export default function Contact() {
 
             <div className="pt-4">
               <div className="bg-[var(--brand)] text-white rounded-[var(--radius)] px-4 py-4 ring-1 ring-white/10 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <div className="flex items-center gap-3">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    aria-busy={loading ? "true" : "false"}
-                    className="btn-ghost on-brand no-underline disabled:opacity-60"
-                  >
-                    {loading ? "Se trimite..." : "Programează-te"}
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  aria-busy={loading ? "true" : "false"}
+                  className="btn-ghost on-brand no-underline disabled:opacity-60"
+                >
+                  {loading ? "Se trimite..." : "Programează-te"}
+                </button>
               </div>
             </div>
           </form>
