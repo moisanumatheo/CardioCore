@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CtaPhones from "../components/CtaPhones.jsx";
 import { SITE } from "../data/site";
 import Seo from "../components/Seo.jsx";
 
@@ -30,7 +31,6 @@ export default function Preturi() {
         <h1 className="text-3xl md:text-4xl font-bold">
           Prețuri <span className="text-[var(--brand)]">CardioCore</span>
         </h1>
-
         {p?.note && (
           <p className="mt-3 text-[15px] text-[var(--muted)] max-w-2xl">
             {p.note}
@@ -39,12 +39,11 @@ export default function Preturi() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-12">
-        {/* ===== MOBILE: Cards (no horizontal scroll) ===== */}
+        {/* MOBILE: Cards */}
         <div className="md:hidden space-y-3">
           {items.map((it) => (
             <div key={it.service} className="card p-4">
               <div className="font-medium leading-snug">{it.service}</div>
-
               <div className="mt-3 grid grid-cols-1 gap-2">
                 <div className="flex items-center justify-between rounded-lg border bg-white px-3 py-2">
                   <span className="text-xs text-[var(--muted)]">
@@ -52,7 +51,6 @@ export default function Preturi() {
                   </span>
                   <PriceCell value={it.a} currency={currency} />
                 </div>
-
                 <div className="flex items-center justify-between rounded-lg border bg-white px-3 py-2">
                   <span className="text-xs text-[var(--muted)]">
                     {docB || "Medic"}
@@ -64,7 +62,7 @@ export default function Preturi() {
           ))}
         </div>
 
-        {/* ===== DESKTOP: Table ===== */}
+        {/* DESKTOP: Table */}
         <div className="hidden md:block card p-4 md:p-6">
           <div className="overflow-x-auto">
             <table className="min-w-[860px] w-full text-sm">
@@ -103,23 +101,11 @@ export default function Preturi() {
           <div className="text-base font-medium">
             Pentru confirmarea prețului și disponibilitate, contactează-ne.
           </div>
-
           <div className="flex items-center gap-3">
             <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
             </Link>
-
-            <div className="flex flex-col gap-2">
-              {SITE.phone?.map((phone) => (
-                <a
-                  key={phone}
-                  href={`tel:${phone.replace(/\s+/g, "")}`}
-                  className="btn-white"
-                >
-                  {phone}
-                </a>
-              ))}
-            </div>
+            <CtaPhones />
           </div>
         </div>
       </section>

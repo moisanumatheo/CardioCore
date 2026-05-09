@@ -1,6 +1,7 @@
 // src/pages/team.jsx
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import CtaPhones from "../components/CtaPhones.jsx";
 import { TEAM, SITE } from "../data/site";
 import Seo from "../components/Seo.jsx";
 
@@ -9,7 +10,6 @@ const SPECIALTIES = [
   ...Array.from(new Set((TEAM || []).map((d) => d.specialty).filter(Boolean))),
 ];
 
-// Schema.org – Physician (ajută când cineva caută "Dr. Cuculici Andreea cardiolog")
 const TEAM_SCHEMA = {
   "@context": "https://schema.org",
   "@graph": [
@@ -21,10 +21,7 @@ const TEAM_SCHEMA = {
       jobTitle: "Medic primar cardiolog",
       description:
         "Medic primar cardiolog, Doctor în Medicină, cu competențe în ecocardiografie transesofagiană și ecografie vasculară Doppler. Activează la Institutul de Boli Cardiovasculare „Prof. Dr. C.C. Iliescu” București.",
-      medicalSpecialty: {
-        "@type": "MedicalSpecialty",
-        name: "Cardiology",
-      },
+      medicalSpecialty: { "@type": "MedicalSpecialty", name: "Cardiology" },
       worksFor: {
         "@type": "MedicalOrganization",
         "@id": "https://cardiocore.ro/#organization",
@@ -41,10 +38,7 @@ const TEAM_SCHEMA = {
       jobTitle: "Medic specialist cardiolog",
       description:
         "Medic specialist cardiolog, cu competență în ecocardiografie Doppler. Membră a Societății Române de Cardiologie și a Societății Europene de Cardiologie.",
-      medicalSpecialty: {
-        "@type": "MedicalSpecialty",
-        name: "Cardiology",
-      },
+      medicalSpecialty: { "@type": "MedicalSpecialty", name: "Cardiology" },
       worksFor: {
         "@type": "MedicalOrganization",
         "@id": "https://cardiocore.ro/#organization",
@@ -126,11 +120,7 @@ export default function Team() {
                 key={s}
                 onClick={() => setFilter(s)}
                 className={`px-3 py-1.5 rounded-md text-sm border transition
-                  ${
-                    filter === s
-                      ? "text-white bg-[var(--brand)] border-transparent"
-                      : "bg-white hover:bg-white/60"
-                  }`}
+                  ${filter === s ? "text-white bg-[var(--brand)] border-transparent" : "bg-white hover:bg-white/60"}`}
               >
                 {s}
               </button>
@@ -143,8 +133,7 @@ export default function Team() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Caută medic, competențe…"
-              className="w-80 md:w-96 max-w-full rounded-md border bg-white px-3 py-2 pr-9
-                         outline-none focus:ring-2 ring-[var(--brand)]"
+              className="w-80 md:w-96 max-w-full rounded-md border bg-white px-3 py-2 pr-9 outline-none focus:ring-2 ring-[var(--brand)]"
             />
             <svg
               className="absolute right-2 top-2.5 size-5 text-[var(--muted)] pointer-events-none"
@@ -166,10 +155,7 @@ export default function Team() {
           {filtered.map((d) => (
             <article
               key={d.id ?? d.name}
-              className="h-full min-h-[320px] flex flex-col rounded-3xl bg-white
-                         border border-black/10 p-6
-                         shadow-[0_1px_0_rgba(0,0,0,0.04)]
-                         hover:shadow-md transition"
+              className="h-full min-h-[320px] flex flex-col rounded-3xl bg-white border border-black/10 p-6 shadow-[0_1px_0_rgba(0,0,0,0.04)] hover:shadow-md transition"
             >
               <div className="flex items-start gap-4">
                 <Avatar name={d.name} />
@@ -278,17 +264,7 @@ export default function Team() {
             <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
             </Link>
-            <div className="flex flex-col gap-2">
-              {SITE.phone?.map((phone) => (
-                <a
-                  key={phone}
-                  href={`tel:${phone.replace(/\s+/g, "")}`}
-                  className="btn-white"
-                >
-                  {phone}
-                </a>
-              ))}
-            </div>
+            <CtaPhones />
           </div>
         </div>
       </section>

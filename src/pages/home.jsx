@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import EKGCard from "../components/ekg-card.jsx";
 import ReviewsCarousel from "../components/reviews-carousel.jsx";
+import CtaPhones from "../components/CtaPhones.jsx";
 import { SITE, REVIEWS as REVIEWS_DATA } from "../data/site";
 import Seo from "../components/Seo.jsx";
 
@@ -66,7 +67,6 @@ const HOME_SCHEMA = {
       "@id": "https://cardiocore.ro/#website",
       url: "https://cardiocore.ro",
       name: "CardioCore",
-      description: "Clinică de cardiologie în București",
       publisher: { "@id": "https://cardiocore.ro/#organization" },
     },
   ],
@@ -75,7 +75,6 @@ const HOME_SCHEMA = {
 export default function Home() {
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)]">
-      {/* SEO pentru homepage */}
       <Seo
         title="CardioCore | Clinică Cardiologie București – Consultații, EKG, Ecocardiografie"
         description="CardioCore – clinică de cardiologie în București, Voluntari (zona Pipera). Consultații cu Dr. Cuculici Andreea și Dr. Pîrîianu-Masgras Bianca: EKG, ecocardiografie Doppler, test de efort, Holter EKG și TA. Programare rapidă."
@@ -102,7 +101,6 @@ export default function Home() {
             <Link to="/contact" className="btn-brand">
               Programează-te acum
             </Link>
-
             <Link
               to="/echipa"
               className="px-4 py-2 rounded-md border text-sm hover:bg-white"
@@ -138,7 +136,6 @@ export default function Home() {
           </ul>
         </div>
 
-        {/* vizual */}
         <div className="relative">
           <EKGCard animated={true} />
           <div className="absolute -bottom-5 -left-5 card p-4">
@@ -177,11 +174,7 @@ export default function Home() {
               to="/servicii"
               className="group card p-4 hover:translate-y-0.5 transition-transform"
             >
-              <div
-                className="size-10 anim-float grid place-items-center rounded-lg mb-3
-                              text-[var(--brand)]
-                              bg-[color:color-mix(in_srgb,var(--brand)_14%,transparent)]"
-              >
+              <div className="size-10 anim-float grid place-items-center rounded-lg mb-3 text-[var(--brand)] bg-[color:color-mix(in_srgb,var(--brand)_14%,transparent)]">
                 <svg
                   viewBox="0 0 24 24"
                   className="size-5"
@@ -205,10 +198,7 @@ export default function Home() {
 
       {/* CTA BAR */}
       <section className="mx-auto max-w-7xl px-4 py-6">
-        <div
-          className="cta-bar bg-[var(--brand)] text-white rounded-[var(--radius)] overflow-hidden px-4 md:px-6 py-5
-                        flex flex-col md:flex-row items-center justify-between gap-4 ring-1 ring-white/10"
-        >
+        <div className="cta-bar bg-[var(--brand)] text-white rounded-[var(--radius)] overflow-hidden px-4 md:px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4 ring-1 ring-white/10">
           <div className="text-base font-medium">
             Programează-te acum pentru un control cardiologic complet.
           </div>
@@ -216,23 +206,11 @@ export default function Home() {
             <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
             </Link>
-
-            <div className="flex flex-col gap-2">
-              {SITE.phone?.map((phone) => (
-                <a
-                  key={phone}
-                  href={`tel:${phone.replace(/\s+/g, "")}`}
-                  className="btn-white"
-                >
-                  {phone}
-                </a>
-              ))}
-            </div>
+            <CtaPhones />
           </div>
         </div>
       </section>
 
-      {/* Recenzii din brief */}
       <ReviewsCarousel items={REVIEWS} interval={4500} />
     </div>
   );

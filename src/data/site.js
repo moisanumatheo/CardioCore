@@ -10,7 +10,7 @@ export const SITE = {
     complex: "Ivory Residence",
     line1: "Bulevardul Pipera, nr. 1-5A, bl. 4, sc. A, ap. 3",
     line2: "Voluntari, județ Ilfov",
-    line: "Ivory Residence — Bulevardul Pipera, nr. 1-5A, bl. 4, sc. A, parter, ap. 3, Voluntari, județ Ilfov", // fallback pt alte locuri
+    line: "Ivory Residence — Bulevardul Pipera, nr. 1-5A, bl. 4, sc. A, parter, ap. 3, Voluntari, județ Ilfov",
     mapsUrl: "https://maps.app.goo.gl/FsGfX4GeiRAdyCF68",
     mapsEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d355.75969780959934!2d26.122984449073787!3d44.4930770933184!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b203c48eaf9361%3A0x8bbebe3b85ddc5e!2sCardioCore!5e0!3m2!1sro!2sus!4v1774247925346!5m2!1sro!2sus",
@@ -20,7 +20,16 @@ export const SITE = {
     { days: "Luni–Vineri", time: "15:00–20:00" },
     { days: "Sâmbătă", time: "09:00–14:00" },
   ],
+
+  // Array simplu – folosit în footer și info contact
   phone: ["+40 758 640 016", "+40 778 739 245"],
+
+  // Array cu asociere doctor–număr – folosit în butoanele CTA
+  phones: [
+    { doctor: "Dr. Pîrîianu", number: "+40 758 640 016" },
+    { doctor: "Dr. Cuculici", number: "+40 778 739 245" },
+  ],
+
   whatsapp: true,
   email: "programari@cardiocore.ro",
   social: {
@@ -156,7 +165,6 @@ export const SITE = {
         b: 600,
       },
       { service: "Ecocardiografie Doppler", a: 400, b: 400 },
-
       { service: "Holter TA / 24 ore (cu interpretare medic)", a: 250, b: 250 },
       {
         service: "Holter EKG 3 derivații / 24 ore (cu interpretare medic)",
@@ -173,14 +181,11 @@ export const SITE = {
         a: 400,
         b: 400,
       },
-
-      // DUBLURA din document (confirmă care e corect)
       {
         service: "Holter EKG 7 derivații / 48 ore (cu interpretare medic)",
         a: 700,
         b: 700,
       },
-
       { service: "Test EKG de efort", a: 400, b: 400 },
       { service: "Recuperare cardiovasculară", a: 500, b: 500 },
       { service: "Telemedicină – consultații online", a: 200, b: 200 },
@@ -196,7 +201,6 @@ export const SITE = {
         a: 300,
         b: null,
       },
-
       {
         service: "Ecografie Doppler vasculară artere sau vene – două membre",
         a: 400,
@@ -216,8 +220,8 @@ export const TEAM = [
     phone: "+40 778 739 245",
     email: "andreea.cuculici@clinica.ro",
     bio: [
-      "Dr. Andreea Cuculici este medic primar cardiolog, membru al Societății Române de Cardiologie și al Societății Europene de Cardiologie, activând în cadrul Institutului de Boli Cardiovasculare „Prof. Dr. C.C. Iliescu” București, Secția de Urgențe Cardiovasculare.",
-      "A absolvit Facultatea de Medicină a Universității „Ovidius” Constanța în anul 2004, devenind medic specialist cardiolog în 2012. Din 2017 deține titlul de medic primar cardiolog, iar din 2020 titlul de Doctor în Medicină. În 2016 a obținut competențe în ecocardiografie transesofagiană și tehnici speciale, precum și în ecografie vasculară Doppler, acordate de UMF „Carol Davila” București.",
+      "Dr. Andreea Cuculici este medic primar cardiolog, membru al Societății Române de Cardiologie și al Societății Europene de Cardiologie, activând în cadrul Institutului de Boli Cardiovasculare „Prof. Dr. C.C. Iliescu“ București, Secția de Urgențe Cardiovasculare.",
+      "A absolvit Facultatea de Medicină a Universității „Ovidius“ Constanța în anul 2004, devenind medic specialist cardiolog în 2012. Din 2017 deține titlul de medic primar cardiolog, iar din 2020 titlul de Doctor în Medicină. În 2016 a obținut competențe în ecocardiografie transesofagiană și tehnici speciale, precum și în ecografie vasculară Doppler, acordate de UMF „Carol Davila“ București.",
       "Are o experiență clinică extinsă în cardiologia de urgență, fiind implicată direct în evaluarea și tratamentul pacienților cu sindroame coronariene acute, insuficiență cardiacă acută, tulburări de ritm cardiac și alte afecțiuni cardiovasculare severe, într-un centru de referință la nivel național.",
       "Abordarea sa medicală este integrată și personalizată, centrată pe pacient, îmbinând rigoarea profesională cu aplicarea ghidurilor europene actuale și a medicinei bazate pe dovezi, alături de empatie, comunicare clară și luarea deciziilor terapeutice adaptate fiecărui caz în parte.",
     ],
@@ -228,11 +232,11 @@ export const TEAM = [
     title: "Medic specialist cardiolog",
     specialty: "Cardiologie",
     tags: ["Imagistică", "Consult adult", "Educație pacient"],
-    phone: "+40 778 739 245",
+    phone: "+40 758 640 016",
     email: "roxana.masgras@clinica.ro",
     bio: [
       "Dr. Bianca Piriianu-Masgras este medic specialist cardiolog, membru al Societății Române de Cardiologie, al Societății Europene de Cardiologie, al Asociației Europene de Imagistică Cardiovasculară și al Asociației Europene de Insuficiență Cardiacă. ",
-      "A absolvit Facultatea de Medicină Generală din cadrul UMF „Carol Davila” București în anul 2016 și a efectuat rezidențiatul la Institutul de Boli Cardiovasculare „Prof. Dr. C.C. Iliescu”. Deține competență în ecocardiografie Doppler și a participat la numeroase proiecte de sănătate publică, educație medicală și prezentări științifice.",
+      "A absolvit Facultatea de Medicină Generală din cadrul UMF „Carol Davila“ București în anul 2016 și a efectuat rezidențiatul la Institutul de Boli Cardiovasculare „Prof. Dr. C.C. Iliescu“. Deține competență în ecocardiografie Doppler și a participat la numeroase proiecte de sănătate publică, educație medicală și prezentări științifice.",
       "În cadrul CardioCore, oferă consultații specializate, evaluări complete și planuri de tratament personalizate pentru pacienții cu afecțiuni cardiovasculare, punând accent pe comunicare empatică, prevenție și promovarea unui stil de viață sănătos.",
     ],
   },

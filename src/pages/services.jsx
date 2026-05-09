@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import CtaPhones from "../components/CtaPhones.jsx";
 import { SITE } from "../data/site";
 import Seo from "../components/Seo.jsx";
 
-// Schema.org – MedicalProcedure catalog (ajută la căutări "EKG București", "ecocardiografie Voluntari" etc.)
 const SERVICES_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "MedicalOrganization",
@@ -139,7 +139,6 @@ export default function Services() {
         <h1 className="text-3xl md:text-4xl font-bold">
           Servicii <span className="text-[var(--brand)]">Cardiologie</span>
         </h1>
-
         <div className="mt-3 text-[15px] leading-relaxed text-[var(--muted)] max-w-2xl">
           <p>
             Investigații și consultații complete, bazate pe ghiduri actuale.
@@ -169,10 +168,7 @@ export default function Services() {
             >
               <div ref={setRef(refHead, idx)}>
                 <div className="flex items-start gap-3">
-                  <span
-                    className="size-9 grid place-items-center rounded-lg text-[var(--brand)]
-                               bg-[color:color-mix(in_srgb,var(--brand)_14%,transparent)]"
-                  >
+                  <span className="size-9 grid place-items-center rounded-lg text-[var(--brand)] bg-[color:color-mix(in_srgb,var(--brand)_14%,transparent)]">
                     <svg
                       viewBox="0 0 24 24"
                       className="size-5"
@@ -279,17 +275,7 @@ export default function Services() {
             <Link to="/contact" className="btn-ghost on-brand">
               Contactează-ne
             </Link>
-            <div className="flex flex-col gap-2">
-              {SITE.phone?.map((phone) => (
-                <a
-                  key={phone}
-                  href={`tel:${phone.replace(/\s+/g, "")}`}
-                  className="btn-white"
-                >
-                  {phone}
-                </a>
-              ))}
-            </div>
+            <CtaPhones />
           </div>
         </div>
       </section>
